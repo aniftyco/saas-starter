@@ -1,5 +1,5 @@
-const { join } = require('path');
-const Encore = require('@symfony/webpack-encore');
+import { join } from 'path';
+import Encore from '@symfony/webpack-encore';
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ Encore.setPublicPath('/assets');
 | entrypoints.
 |
 */
-Encore.addEntry('app', './resources/js/app.js');
+Encore.addEntry('app', './resources/js/app.ts');
 
 /*
 |--------------------------------------------------------------------------
@@ -211,4 +211,4 @@ config.stats = 'errors-warnings';
 | Export config for webpack to do its job
 |
 */
-module.exports = config;
+export default config;
