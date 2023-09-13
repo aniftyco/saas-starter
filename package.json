@@ -8,6 +8,7 @@
     "start": "node server.js",
     "test": "node ace test"
   },
+  "prettier": "@aniftyco/prettier",
   "dependencies": {
     "@adonisjs/core": "^5.9.0",
     "@adonisjs/repl": "^3.1.11",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.9.5",
+    "@aniftyco/prettier": "^0.1.0",
     "@babel/core": "^7.22.17",
     "@babel/preset-env": "^7.22.15",
     "@japa/preset-adonis": "^1.2.0",
@@ -29,6 +31,7 @@
     "@types/source-map-support": "^0.5.7",
     "adonis-preset-ts": "^2.1.0",
     "pino-pretty": "^10.2.0",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
