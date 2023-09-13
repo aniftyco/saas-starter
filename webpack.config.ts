@@ -169,8 +169,11 @@ Encore.configureDevServerOptions((options) => {
 | PostCSS or CSS.
 |
 */
-// Encore.enablePostCssLoader()
-// Encore.configureCssLoader(() => {})
+Encore.enablePostCssLoader();
+Encore.configureCssLoader((options) => {
+  // Don't resolve `url()` imports in Tailwind.
+  options.url = false;
+});
 
 /*
 |--------------------------------------------------------------------------
