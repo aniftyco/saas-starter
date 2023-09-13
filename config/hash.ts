@@ -5,8 +5,8 @@
  * file.
  */
 
-import Env from '@ioc:Adonis/Core/Env'
-import { hashConfig } from '@adonisjs/core/build/config'
+import Env from '@ioc:Adonis/Core/Env';
+import { hashConfig } from '@adonisjs/core/build/config';
 
 /*
 |--------------------------------------------------------------------------
@@ -93,4 +93,4 @@ export default hashConfig({
       rounds: 10,
     },
   },
-})
+});
