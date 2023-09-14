@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node ace serve --watch",
+    "start": "node ace serve --watch",
     "build": "node ace build --production",
-    "start": "node server.js",
     "test": "node ace test"
   },
   "prettier": "@aniftyco/prettier",
