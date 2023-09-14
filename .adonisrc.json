@@ -1,13 +1,36 @@
 {
   "typescript": true,
-  "commands": ["./commands", "@adonisjs/core/build/commands/index.js", "@adonisjs/repl/build/commands"],
-  "exceptionHandlerNamespace": "App/Exceptions/Handler",
-  "aliases": {
-    "App": "app",
-    "Config": "config",
-    "Database": "database",
-    "Contracts": "contracts"
+  "directories": {
+    "config": "config",
+    "public": "public",
+    "contracts": "contracts",
+    "providers": "providers",
+    "database": "database",
+    "migrations": "database/migrations",
+    "seeds": "database/seeders",
+    "resources": "resources",
+    "views": "resources/views",
+    "start": "start",
+    "tmp": "tmp",
+    "tests": "tests"
   },
+  "exceptionHandlerNamespace": "@app/Exceptions/Handler",
+  "namespaces": {
+    "models": "@app/Models",
+    "middleware": "@app/Middleware",
+    "exceptions": "@app/Exceptions",
+    "validators": "@app/Validators",
+    "httpControllers": "@app/Controllers",
+    "eventListeners": "@app/Listeners",
+    "redisListeners": "@app/Listeners"
+  },
+  "aliases": {
+    "@app": "app",
+    "@config": "config",
+    "@database": "database",
+    "@contracts": "contracts"
+  },
+  "commands": ["./commands", "@adonisjs/core/build/commands/index.js", "@adonisjs/repl/build/commands"],
   "preloads": ["./start/routes", "./start/kernel"],
   "providers": ["./providers/AppProvider", "@adonisjs/core", "@adonisjs/session", "@adonisjs/view", "@adonisjs/shield"],
   "metaFiles": [
@@ -26,6 +49,11 @@
       {
         "name": "functional",
         "files": ["tests/functional/**/*.spec(.ts|.js)"],
+        "timeout": 60000
+      },
+      {
+        "name": "unit",
+        "files": ["tests/unit/**/*.spec(.ts|.js)"],
         "timeout": 60000
       }
     ]

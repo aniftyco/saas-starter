@@ -3,14 +3,17 @@
   "include": ["**/*"],
   "exclude": ["node_modules", "build"],
   "compilerOptions": {
+    "lib": ["esnext", "dom"],
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,
+    "noUnusedParameters": false,
+    "noImplicitAny": false,
     "paths": {
-      "App/*": ["./app/*"],
-      "Config/*": ["./config/*"],
-      "Contracts/*": ["./contracts/*"],
-      "Database/*": ["./database/*"]
+      "@app/*": ["./app/*"],
+      "@config/*": ["./config/*"],
+      "@contracts/*": ["./contracts/*"],
+      "@database/*": ["./database/*"]
     },
     "types": [
       "@adonisjs/core",
