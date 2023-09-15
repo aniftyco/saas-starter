@@ -27,7 +27,8 @@
       "@adonisjs/auth",
       "@adonisjs/mail",
       "@rlanz/bull-queue",
-      "@verful/scheduler"
+      "@verful/scheduler",
+      "@adonisjs/redis"
     ]
   }
 }
