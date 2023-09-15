@@ -20,7 +20,7 @@ const databaseConfig: DatabaseConfig = {
   | file.
   |
   */
-  connection: Env.get('DB_CONNECTION'),
+  connection: Env.get('DATABASE_CONNECTION', 'postgres'),
 
   connections: {
     /*
@@ -37,12 +37,9 @@ const databaseConfig: DatabaseConfig = {
     pg: {
       client: 'pg',
       connection: {
-        host: Env.get('PG_HOST'),
-        port: Env.get('PG_PORT'),
-        user: Env.get('PG_USER'),
-        password: Env.get('PG_PASSWORD', ''),
-        database: Env.get('PG_DB_NAME'),
-      },
+        connectionString: Env.get('DATABASE_URL'),
+        ssl: Env.get('NODE_ENV', 'production') === 'production' ? { rejectUnauthorized: false } : undefined,
+      } as any,
       migrations: {
         naturalSort: true,
       },
