@@ -18,7 +18,13 @@ Once that's done, you can go into your directory and install dependencies.
 cd my-app && npm install
 ```
 
-Now you should be able to start the app up and access it in your browser.
+After that make sure to copy the `.env.example` file into your own `.env` file or Adonis will not startup.
+
+```sh
+cp .env.example .env
+```
+
+Now start the application and go to [http://localhost:3333](http://localhost:3333) to see your app.
 
 ```sh
 npm start
