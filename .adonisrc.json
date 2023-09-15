@@ -36,12 +36,10 @@
     "@adonisjs/repl/build/commands",
     "@adonisjs/lucid/build/commands",
     "@adonisjs/mail/build/commands",
-    "@rlanz/bull-queue/build/commands"
+    "@rlanz/bull-queue/build/commands",
+    "@verful/scheduler/build/commands"
   ],
-  "preloads": [
-    "./start/routes",
-    "./start/kernel"
-  ],
+  "preloads": ["./start/routes", "./start/kernel", "./start/tasks"],
   "providers": [
     "./providers/AppProvider",
     "@adonisjs/core",
@@ -52,7 +50,8 @@
     "adonis-lucid-soft-deletes",
     "@adonisjs/auth",
     "@adonisjs/mail",
-    "@rlanz/bull-queue"
+    "@rlanz/bull-queue",
+    "@verful/scheduler"
   ],
   "metaFiles": [
     {
@@ -64,28 +63,20 @@
       "reloadServer": false
     }
   ],
-  "aceProviders": [
-    "@adonisjs/repl"
-  ],
+  "aceProviders": ["@adonisjs/repl"],
   "tests": {
     "suites": [
       {
         "name": "functional",
-        "files": [
-          "tests/functional/**/*.spec(.ts|.js)"
-        ],
+        "files": ["tests/functional/**/*.spec(.ts|.js)"],
         "timeout": 60000
       },
       {
         "name": "unit",
-        "files": [
-          "tests/unit/**/*.spec(.ts|.js)"
-        ],
+        "files": ["tests/unit/**/*.spec(.ts|.js)"],
         "timeout": 60000
       }
     ]
   },
-  "testProviders": [
-    "@japa/preset-adonis/TestsProvider"
-  ]
+  "testProviders": ["@japa/preset-adonis/TestsProvider"]
 }

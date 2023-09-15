@@ -1,35 +1,19 @@
 {
   "extends": "adonis-preset-ts/tsconfig.json",
-  "include": [
-    "**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "build"
-  ],
+  "include": ["**/*"],
+  "exclude": ["node_modules", "build"],
   "compilerOptions": {
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,
     "noUnusedParameters": false,
     "noImplicitAny": false,
     "paths": {
-      "@app/*": [
-        "./app/*"
-      ],
-      "@config/*": [
-        "./config/*"
-      ],
-      "@contracts/*": [
-        "./contracts/*"
-      ],
-      "@database/*": [
-        "./database/*"
-      ]
+      "@app/*": ["./app/*"],
+      "@config/*": ["./config/*"],
+      "@contracts/*": ["./contracts/*"],
+      "@database/*": ["./database/*"]
     },
     "types": [
       "@adonisjs/core",
@@ -42,7 +26,8 @@
       "adonis-lucid-soft-deletes",
       "@adonisjs/auth",
       "@adonisjs/mail",
-      "@rlanz/bull-queue"
+      "@rlanz/bull-queue",
+      "@verful/scheduler"
     ]
   }
 }
