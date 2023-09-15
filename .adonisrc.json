@@ -30,9 +30,25 @@
     "@database": "database",
     "@contracts": "contracts"
   },
-  "commands": ["./commands", "@adonisjs/core/build/commands/index.js", "@adonisjs/repl/build/commands"],
-  "preloads": ["./start/routes", "./start/kernel"],
-  "providers": ["./providers/AppProvider", "@adonisjs/core", "@adonisjs/session", "@adonisjs/view", "@adonisjs/shield"],
+  "commands": [
+    "./commands",
+    "@adonisjs/core/build/commands/index.js",
+    "@adonisjs/repl/build/commands",
+    "@adonisjs/lucid/build/commands"
+  ],
+  "preloads": [
+    "./start/routes",
+    "./start/kernel"
+  ],
+  "providers": [
+    "./providers/AppProvider",
+    "@adonisjs/core",
+    "@adonisjs/session",
+    "@adonisjs/view",
+    "@adonisjs/shield",
+    "@adonisjs/lucid",
+    "adonis-lucid-soft-deletes"
+  ],
   "metaFiles": [
     {
       "pattern": "public/**",
@@ -43,20 +59,28 @@
       "reloadServer": false
     }
   ],
-  "aceProviders": ["@adonisjs/repl"],
+  "aceProviders": [
+    "@adonisjs/repl"
+  ],
   "tests": {
     "suites": [
       {
         "name": "functional",
-        "files": ["tests/functional/**/*.spec(.ts|.js)"],
+        "files": [
+          "tests/functional/**/*.spec(.ts|.js)"
+        ],
         "timeout": 60000
       },
       {
         "name": "unit",
-        "files": ["tests/unit/**/*.spec(.ts|.js)"],
+        "files": [
+          "tests/unit/**/*.spec(.ts|.js)"
+        ],
         "timeout": 60000
       }
     ]
   },
-  "testProviders": ["@japa/preset-adonis/TestsProvider"]
+  "testProviders": [
+    "@japa/preset-adonis/TestsProvider"
+  ]
 }
