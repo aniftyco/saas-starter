@@ -1,19 +1,35 @@
 {
   "extends": "adonis-preset-ts/tsconfig.json",
-  "include": ["**/*"],
-  "exclude": ["node_modules", "build"],
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
   "compilerOptions": {
-    "lib": ["esnext", "dom"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,
     "noUnusedParameters": false,
     "noImplicitAny": false,
     "paths": {
-      "@app/*": ["./app/*"],
-      "@config/*": ["./config/*"],
-      "@contracts/*": ["./contracts/*"],
-      "@database/*": ["./database/*"]
+      "@app/*": [
+        "./app/*"
+      ],
+      "@config/*": [
+        "./config/*"
+      ],
+      "@contracts/*": [
+        "./contracts/*"
+      ],
+      "@database/*": [
+        "./database/*"
+      ]
     },
     "types": [
       "@adonisjs/core",
@@ -24,7 +40,8 @@
       "@japa/preset-adonis/build/adonis-typings",
       "@adonisjs/lucid",
       "adonis-lucid-soft-deletes",
-      "@adonisjs/auth"
+      "@adonisjs/auth",
+      "@adonisjs/mail"
     ]
   }
 }
