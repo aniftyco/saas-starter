@@ -34,7 +34,7 @@ const databaseConfig: DatabaseConfig = {
     | npm i pg
     |
     */
-    pg: {
+    postgres: {
       client: 'pg',
       connection: {
         connectionString: Env.get('DATABASE_URL'),
