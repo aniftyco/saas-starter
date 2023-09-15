@@ -23,6 +23,7 @@
     "@adonisjs/session": "^6.4.0",
     "@adonisjs/shield": "^7.1.1",
     "@adonisjs/view": "^6.2.0",
+    "@rlanz/bull-queue": "^1.0.6",
     "adonis-lucid-soft-deletes": "^1.4.4",
     "aws-sdk": "^2.1458.0",
     "luxon": "^3.4.3",

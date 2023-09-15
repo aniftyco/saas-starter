@@ -35,7 +35,8 @@
     "@adonisjs/core/build/commands/index.js",
     "@adonisjs/repl/build/commands",
     "@adonisjs/lucid/build/commands",
-    "@adonisjs/mail/build/commands"
+    "@adonisjs/mail/build/commands",
+    "@rlanz/bull-queue/build/commands"
   ],
   "preloads": [
     "./start/routes",
@@ -50,7 +51,8 @@
     "@adonisjs/lucid",
     "adonis-lucid-soft-deletes",
     "@adonisjs/auth",
-    "@adonisjs/mail"
+    "@adonisjs/mail",
+    "@rlanz/bull-queue"
   ],
   "metaFiles": [
     {

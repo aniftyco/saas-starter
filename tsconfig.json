@@ -41,7 +41,8 @@
       "@adonisjs/lucid",
       "adonis-lucid-soft-deletes",
       "@adonisjs/auth",
-      "@adonisjs/mail"
+      "@adonisjs/mail",
+      "@rlanz/bull-queue"
     ]
   }
 }

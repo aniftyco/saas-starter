@@ -34,6 +34,8 @@ export default Env.rules({
   DATABASE_CONNECTION: Env.schema.string.optional(),
   DATABASE_URL: Env.schema.string(),
 
+  REDIS_URL: Env.schema.string(),
+
   CORS_ENABLED: Env.schema.boolean.optional(),
 
   MAIL_TRANSPORT: Env.schema.enum.optional(['smtp', 'ses', 'mailgun'] as const),
