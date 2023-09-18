@@ -4,6 +4,7 @@ import SignUpValidator from '@app/Validators/SignUpValidator';
 import Logger from '@ioc:Adonis/Core/Logger';
 
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
+
 export default class AuthController {
   public async signUp({ request, response, auth, session }: HttpContextContract) {
     const { name, email, password } = await request.validate(SignUpValidator);
