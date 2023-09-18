@@ -24,6 +24,12 @@ After that make sure to copy the `.env.example` file into your own `.env` file o
 cp .env.example .env
 ```
 
+**Optionally:** You can migrate and seed the database.
+
+```sh
+node ace migration:run --seed
+```
+
 Now start the application and go to [http://localhost:3333](http://localhost:3333) to see your app.
 
 ```sh
