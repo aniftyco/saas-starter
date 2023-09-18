@@ -10,8 +10,8 @@ export default class CreateUsersTable extends Schema {
       table.string('password').notNullable();
       table.string('remember_me_token').nullable();
 
-      table.string('name').nullable();
       // Any extra fields would go here
+      table.string('name').notNullable();
 
       table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(this.raw('NOW()'));
       table.timestamp('updated_at', { useTz: true }).notNullable().defaultTo(this.raw('NOW()'));
