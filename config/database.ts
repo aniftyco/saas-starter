@@ -41,6 +41,7 @@ const databaseConfig: DatabaseConfig = {
         ssl: Env.get('NODE_ENV', 'production') === 'production' ? { rejectUnauthorized: false } : undefined,
       } as any,
       migrations: {
+        tableName: '_schema',
         naturalSort: true,
       },
       healthCheck: false,
