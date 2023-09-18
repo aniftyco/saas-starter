@@ -1,4 +1,5 @@
 import { AuthenticationException } from '@adonisjs/auth/build/standalone';
+import Route from '@ioc:Adonis/Core/Route';
 
 import type { GuardsList } from '@ioc:Adonis/Addons/Auth';
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
@@ -12,9 +13,9 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
  */
 export default class AuthMiddleware {
   /**
-   * The URL to redirect to when request is Unauthorized
+   * The named route to redirect to when request is Unauthorized
    */
-  protected redirectTo = '/login';
+  protected redirectTo = 'sign-in';
 
   /**
    * Authenticates the current HTTP request against a custom set of defined
@@ -54,7 +55,7 @@ export default class AuthMiddleware {
       'Unauthorized access',
       'E_UNAUTHORIZED_ACCESS',
       guardLastAttempted,
-      this.redirectTo
+      Route.makeUrl(this.redirectTo)
     );
   }
 

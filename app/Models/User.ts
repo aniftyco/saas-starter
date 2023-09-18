@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon';
+
 import { SoftDeletes } from '@ioc:Adonis/Addons/LucidSoftDeletes';
 import Hash from '@ioc:Adonis/Core/Hash';
 import { compose } from '@ioc:Adonis/Core/Helpers';

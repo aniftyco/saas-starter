@@ -1,0 +1,8 @@
+@set('method', method ?? 'POST')
+@set('action', action ?? request.url())
+@set('className', className ?? null)
+
+<form method="{{ method.toLowerCase() }}" action="{{ action }}" {{{ className ? `class="${className}"` : '' }}}>
+  {{ csrfField() }}
+  {{{ await $slots.main() }}}
+</form>
