@@ -17,7 +17,7 @@ import Env from '@ioc:Adonis/Core/Env';
 export default Env.rules({
   NODE_ENV: Env.schema.enum(['development', 'production', 'test'] as const),
 
-  APP_NAME: Env.schema.string(),
+  APP_NAME: Env.schema.string.optional(),
   APP_KEY: Env.schema.string(),
 
   HOST: Env.schema.string({ format: 'host' }),
