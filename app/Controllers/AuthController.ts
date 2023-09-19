@@ -4,7 +4,6 @@ import SignUpValidator from '@app/Validators/SignUpValidator';
 import Logger from '@ioc:Adonis/Core/Logger';
 
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
-
 export default class AuthController {
   public async signUp({ request, response, auth, session }: HttpContextContract) {
     const { name, email, password } = await request.validate(SignUpValidator);
@@ -15,7 +14,7 @@ export default class AuthController {
       auth.login(user);
 
       return response.redirect().toRoute('dashboard');
-    } catch (err) {
+    } catch (err: any) {
       Logger.error(err);
 
       session.flash('errors.email', 'Something went wrong');
@@ -31,7 +30,7 @@ export default class AuthController {
       await auth.attempt(email, password, remember);
 
       return response.redirect().toRoute('dashboard');
-    } catch (err) {
+    } catch (err: any) {
       Logger.error(err);
 
       session.flash('errors.email', 'Invalid credentials');

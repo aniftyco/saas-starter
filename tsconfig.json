@@ -1,14 +1,10 @@
 {
-  "extends": "adonis-preset-ts/tsconfig.json",
+  "extends": "@aniftyco/tsconfig",
   "include": ["**/*"],
   "exclude": ["node_modules", "build"],
   "compilerOptions": {
-    "lib": ["esnext", "dom"],
     "outDir": "build",
     "rootDir": "./",
-    "sourceMap": true,
-    "noUnusedParameters": false,
-    "noImplicitAny": false,
     "paths": {
       "@app/*": ["./app/*"],
       "@config/*": ["./config/*"],

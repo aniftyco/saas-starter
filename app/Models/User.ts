@@ -30,9 +30,6 @@ export default class User extends compose(Model, SoftDeletes) {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
 
-  @column.dateTime()
-  public deletedAt: DateTime;
-
   @beforeSave()
   public static async hashPassword(user: User) {
     if (user.$dirty.password) {
