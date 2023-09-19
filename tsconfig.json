@@ -28,7 +28,8 @@
       "@adonisjs/mail",
       "@rlanz/bull-queue",
       "@verful/scheduler",
-      "@adonisjs/redis"
+      "@adonisjs/redis",
+      "@adonisjs/route-model-binding/build/adonis-typings"
     ]
   }
 }
