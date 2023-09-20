@@ -28,7 +28,6 @@
     "@rlanz/bull-queue": "^1.0.6",
     "@verful/scheduler": "^1.2.2",
     "adonis-lucid-soft-deletes": "^1.4.4",
-    "aws-sdk": "^2.1458.0",
     "luxon": "^3.4.3",
     "pg": "^8.11.3",
     "proxy-addr": "^2.0.7",
