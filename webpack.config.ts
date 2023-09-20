@@ -1,4 +1,5 @@
 import { join } from 'path';
+
 import Encore from '@symfony/webpack-encore';
 
 /*
