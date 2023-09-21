@@ -24,6 +24,12 @@ After that make sure to copy the `.env.example` file into your own `.env` file o
 cp .env.example .env
 ```
 
+Now you can generate an `APP_KEY` by running the following command
+
+```sh
+node ace generate:key
+```
+
 **Optionally:** You can migrate and seed the database.
 
 ```sh
