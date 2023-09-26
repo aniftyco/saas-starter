@@ -131,6 +131,11 @@ Encore.enableVersioning(Encore.isProduction());
 */
 Encore.configureDevServerOptions((options) => {
   /**
+   * Disable websocket server behind proxy
+   */
+  // options.webSocketServer = false;
+
+  /**
    * Normalize "options.static" property to an array
    */
   if (!options.static) {
