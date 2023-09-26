@@ -5,8 +5,6 @@
  * file.
  */
 
-import proxyAddr from 'proxy-addr';
-
 import Application from '@ioc:Adonis/Core/Application';
 import Env from '@ioc:Adonis/Core/Env';
 
@@ -81,7 +79,7 @@ export const http: ServerConfig = {
   | headers.
   |
   */
-  trustProxy: proxyAddr.compile('loopback'),
+  trustProxy: () => true,
 
   /*
   |--------------------------------------------------------------------------
