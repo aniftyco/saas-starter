@@ -12,7 +12,7 @@ USER node
 # Build
 FROM base AS build
 COPY --chown=node:node package*.json .
-RUN npm ci
+RUN npm install
 COPY --chown=node:node . .
 RUN npm run build
 
@@ -24,7 +24,7 @@ ENV HOST=0.0.0.0
 ENV PATH $PATH:/app/node_modules/.bin
 COPY --chown=node:node ./package*.json ./
 COPY --chown=node:node --from=build /app/node_modules ./node_modules
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 COPY --chown=node:node --from=build /app/build .
 COPY --chown=node:node --from=build /app/Procfile .
 EXPOSE 5000
