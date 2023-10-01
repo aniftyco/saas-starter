@@ -25,6 +25,8 @@ sourceMapSupport.install({ handleUncaughtExceptions: false });
 
 const kernel = new Ignitor(__dirname).kernel('test');
 
+kernel.application.container.useProxies();
+
 kernel
   .boot()
   .then(() => import('./tests/bootstrap'))
