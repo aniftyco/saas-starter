@@ -25,7 +25,7 @@ export default Env.rules({
 
   CACHE_VIEWS: Env.schema.boolean(),
 
-  SESSION_DRIVER: Env.schema.enum.optional(['cookie', 'file', 'redis'] as const),
+  SESSION_DRIVER: Env.schema.enum.optional(['cookie', 'file', 'redis', 'memory'] as const),
   SESSION_NAME: Env.schema.string.optional(),
   SESSION_REDIS_CONNECTION_NAME: Env.schema.enum.optional(['local'] as const),
 
