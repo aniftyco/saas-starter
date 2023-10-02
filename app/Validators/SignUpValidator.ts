@@ -43,13 +43,13 @@ export default class SignUpValidator {
    *
    */
   public messages: CustomMessages = {
-    'name.required': 'Your name is required',
-    'email.required': 'A valid email address is required',
-    'email.email': 'A valid email address is required',
-    'email.unique': 'A user with this email already exists',
-    'password.required': 'A password is required',
-    'password.confirmed': 'Password does not match confirmation',
-    'password_confirmation.required': 'A password confirmation is required',
-    'password_confirmation.confirmed': 'Confirmation does not match password',
+    'name.required': 'Your name is required.',
+    'email.required': 'A valid email address is required.',
+    'email.email': 'A valid email address is required.',
+    'email.unique': 'A user with this email already exists.',
+    'password.required': 'A password is required.',
+    'password.confirmed': 'Password does not match confirmation.',
+    'password_confirmation.required': 'A password confirmation is required.',
+    'password_confirmation.confirmed': 'Confirmation does not match password.',
   };
 }

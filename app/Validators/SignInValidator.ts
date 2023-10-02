@@ -42,8 +42,8 @@ export default class SignInValidator {
    *
    */
   public messages: CustomMessages = {
-    'email.required': 'A valid email address is required',
-    'email.email': 'A valid email address is required',
-    'password.required': 'A password is required',
+    'email.required': 'A valid email address is required.',
+    'email.email': 'A valid email address is required.',
+    'password.required': 'A password is required.',
   };
 }

@@ -7,7 +7,7 @@
   @entryPointStyles('app')
   @entryPointScripts('app')
 </head>
-<body class="{{ className || ''}}">
+<body class="{{ className || ''}}" hx-boost="true" hx-headers='{"x-csrf-token":"{{ csrfToken }}"}'>
   {{{ await $slots.main() }}}
 </body>
 </html>

@@ -52,6 +52,7 @@
     "@types/proxy-addr": "^2.0.0",
     "@types/source-map-support": "^0.5.7",
     "autoprefixer": "^10.4.15",
+    "htmx.org": "^1.9.6",
     "pino-pretty": "^10.2.0",
     "postcss": "^8.4.29",
     "postcss-loader": "^7.3.3",
