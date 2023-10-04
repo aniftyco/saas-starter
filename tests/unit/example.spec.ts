@@ -1,5 +1,7 @@
 import { test } from '@japa/runner';
 
-test('It should work', ({ assert }) => {
-  assert.equal(1, 1);
+const add = (a: number, b: number) => a + b;
+
+test('1 + 2 = 3', ({ assert }) => {
+  assert.equal(add(1, 2), 3);
 });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" hx-boost="true" hx-headers='{"x-csrf-token":"{{ csrfToken }}"}'>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
   @entryPointStyles('app')
   @entryPointScripts('app')
 </head>
-<body class="{{ className || ''}}" hx-boost="true" hx-headers='{"x-csrf-token":"{{ csrfToken }}"}'>
+<body class="{{ className || ''}}">
   {{{ await $slots.main() }}}
 </body>
 </html>

@@ -5,7 +5,7 @@ export default class CreateUsersTable extends Schema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.uuid('id').primary().defaultTo(this.raw('uuid_generate_v4()'));
+      table.uuid('id').primary();
       table.string('email').notNullable().unique();
       table.string('password').notNullable();
       table.string('remember_me_token').nullable();
@@ -13,8 +13,8 @@ export default class CreateUsersTable extends Schema {
       // Any extra fields would go here
       table.string('name').notNullable();
 
-      table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(this.raw('NOW()'));
-      table.timestamp('updated_at', { useTz: true }).notNullable().defaultTo(this.raw('NOW()'));
+      table.timestamp('created_at', { useTz: true }).notNullable();
+      table.timestamp('updated_at', { useTz: true }).notNullable();
       table.timestamp('deleted_at', { useTz: true }).nullable();
     });
   }

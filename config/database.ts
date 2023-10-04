@@ -47,6 +47,26 @@ const databaseConfig: DatabaseConfig = {
       healthCheck: false,
       debug: false,
     },
+
+    /*
+    |--------------------------------------------------------------------------
+    | SQLite
+    |--------------------------------------------------------------------------
+    |
+    | Configuration for the SQLite database.  Make sure to install the driver
+    | from npm when using this connection
+    |
+    | npm i sqlite3
+    |
+    */
+    sqlite: {
+      client: 'sqlite',
+      connection: { filename: ':memory:' },
+      migrations: { naturalSort: true },
+      useNullAsDefault: true,
+      healthCheck: false,
+      debug: false,
+    },
   },
 };
 

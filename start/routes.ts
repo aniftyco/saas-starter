@@ -32,7 +32,7 @@ Route.group(() => {
     Route.post('/sign-in', 'AuthController.signIn');
     Route.on('/forgot-password').render('pages/forgot-password').as('forgot-password');
     Route.post('/forgot-password', 'AuthController.forgotPassword');
-    Route.on('/reset-password').render('pages/reset-password').as('rest-password');
+    Route.on('/reset-password').render('pages/reset-password').as('reset-password');
     Route.post('/reset-password', 'AuthController.resetPassword');
   }).middleware('guest');
 });

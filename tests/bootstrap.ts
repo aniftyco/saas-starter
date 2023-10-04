@@ -7,7 +7,34 @@
 
 import type { Config } from '@japa/runner';
 import TestUtils from '@ioc:Adonis/Core/TestUtils';
+import { browserClient, decoratorsCollection } from '@japa/browser-client';
 import { apiClient, assert, runFailedTests, specReporter } from '@japa/preset-adonis';
+
+decoratorsCollection.register({
+  context(context) {
+    // Implement any helpers you want.
+    // Example "Sign In":
+    context.signIn = async function (email: string, password: string) {
+      const page = await context.visit('/sign-in');
+      const emailInput = page.getByLabel('Email Address');
+      const passwordInput = page.getByLabel('Password');
+
+      await emailInput.fill(email);
+      await passwordInput.fill(password);
+
+      await page.getByRole('button', { name: 'Sign In' }).click();
+
+      return page;
+    };
+  },
+});
+
+declare module 'playwright' {
+  // Declare the helpers onto context for usage.
+  export interface BrowserContext {
+    signIn(email: string, password: string): Promise<Page>;
+  }
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +47,14 @@ import { apiClient, assert, runFailedTests, specReporter } from '@japa/preset-ad
 | Feel free to remove existing plugins or add more.
 |
 */
-export const plugins: Required<Config>['plugins'] = [assert(), runFailedTests(), apiClient()];
+export const plugins: Required<Config>['plugins'] = [
+  assert(),
+  runFailedTests(),
+  apiClient(),
+  browserClient({
+    runInSuites: ['e2e'],
+  }),
+];
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +81,7 @@ export const reporters: Required<Config>['reporters'] = [specReporter()];
 |
 */
 export const runnerHooks: Pick<Required<Config>, 'setup' | 'teardown'> = {
-  setup: [() => TestUtils.ace().loadCommands()],
+  setup: [() => TestUtils.ace().loadCommands(), () => TestUtils.db().migrate()],
   teardown: [],
 };
 
@@ -63,7 +97,7 @@ export const runnerHooks: Pick<Required<Config>, 'setup' | 'teardown'> = {
 | the HTTP server when it is a functional suite.
 */
 export const configureSuite: Required<Config>['configureSuite'] = (suite) => {
-  if (suite.name === 'functional') {
+  if (['functional', 'e2e'].includes(suite.name)) {
     suite.setup(() => TestUtils.httpServer().start());
   }
 };

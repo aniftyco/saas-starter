@@ -5,7 +5,7 @@ export default class CreateApiTokensTable extends Schema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.uuid('id').primary().defaultTo(this.raw('uuid_generate_v4()'));
+      table.uuid('id').primary();
       table.uuid('user_id').references('id').inTable('users');
       table.string('name').notNullable();
       table.string('type').notNullable();
@@ -13,8 +13,8 @@ export default class CreateApiTokensTable extends Schema {
 
       table.timestamp('expires_at', { useTz: true }).nullable();
 
-      table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(this.raw('NOW()'));
-      table.timestamp('updated_at', { useTz: true }).notNullable().defaultTo(this.raw('NOW()'));
+      table.timestamp('created_at', { useTz: true }).notNullable();
+      table.timestamp('updated_at', { useTz: true }).notNullable();
       table.timestamp('deleted_at', { useTz: true }).nullable();
     });
   }

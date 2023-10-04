@@ -27,7 +27,7 @@ export default class SignUpValidator {
   public schema = schema.create({
     name: schema.string([rules.trim()]),
     email: schema.string([rules.trim(), rules.email(), rules.unique({ table: 'users', column: 'email' })]),
-    password: schema.string([rules.trim()]),
+    password: schema.string([rules.trim(), rules.minLength(8), rules.maxLength(64)]),
     password_confirmation: schema.string([rules.trim(), rules.confirmed('password')]),
   });
 
@@ -49,6 +49,8 @@ export default class SignUpValidator {
     'email.unique': 'A user with this email already exists.',
     'password.required': 'A password is required.',
     'password.confirmed': 'Password does not match confirmation.',
+    'password.minLength': 'Password must be at least 8 characters.',
+    'password.maxLength': 'Password cannot be over 64 characters.',
     'password_confirmation.required': 'A password confirmation is required.',
     'password_confirmation.confirmed': 'Confirmation does not match password.',
   };

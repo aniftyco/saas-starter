@@ -11,8 +11,6 @@ export default class UserSeed extends Seed {
       password: Env.get('DATABASE_SEED_PASSWORD', 'hunter2'),
 
       name: Env.get('DATABASE_SEED_NAME', 'Jane Doe'),
-
-      confirmedAt: DateTime.now(),
     });
   }
 }

@@ -70,13 +70,18 @@
     "suites": [
       {
         "name": "functional",
-        "files": ["tests/functional/**/*.spec(.ts|.js)"],
+        "files": ["tests/functional/**/*.spec.ts"],
         "timeout": 60000
       },
       {
         "name": "unit",
-        "files": ["tests/unit/**/*.spec(.ts|.js)"],
+        "files": ["tests/unit/**/*.spec.ts"],
         "timeout": 60000
+      },
+      {
+        "name": "e2e",
+        "files": ["tests/e2e/**/*.spec.ts"],
+        "timeout": 100000
       }
     ]
   },
