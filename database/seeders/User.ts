@@ -1,5 +1,3 @@
-import { DateTime } from 'luxon';
-
 import User from '@app/Models/User';
 import Env from '@ioc:Adonis/Core/Env';
 import Seed from '@ioc:Adonis/Lucid/Seeder';
