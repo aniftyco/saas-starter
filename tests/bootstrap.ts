@@ -8,6 +8,7 @@
 import type { Config } from '@japa/runner';
 import TestUtils from '@ioc:Adonis/Core/TestUtils';
 import { browserClient, decoratorsCollection } from '@japa/browser-client';
+import { expect } from '@japa/expect';
 import { apiClient, assert, runFailedTests, specReporter } from '@japa/preset-adonis';
 
 decoratorsCollection.register({
@@ -49,6 +50,7 @@ declare module 'playwright' {
 */
 export const plugins: Required<Config>['plugins'] = [
   assert(),
+  expect(),
   runFailedTests(),
   apiClient(),
   browserClient({
