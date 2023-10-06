@@ -27,7 +27,6 @@ export default class AuthController {
   }
 
   public async signIn({ request, response, auth, session }: HttpContextContract) {
-    await new Promise((r) => setTimeout(r, 1000));
     const { email, password, remember } = await request.validate(SignInValidator);
 
     try {
