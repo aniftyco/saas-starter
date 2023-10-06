@@ -1,11 +1,15 @@
 import 'tailwindcss/tailwind.css';
 
-import Htmx from 'htmx.org';
+import htmx from 'htmx.org';
 
 declare global {
   interface Window {
-    Htmx: typeof Htmx;
+    htmx: typeof htmx;
   }
 }
 
-window.Htmx = Htmx;
+window.htmx = htmx;
+
+require('htmx.org/dist/ext/head-support');
+require('htmx-ext/dist/body-support');
+require('htmx-ext/dist/csrf-token');
