@@ -28,7 +28,8 @@
     "@app": "app",
     "@config": "config",
     "@database": "database",
-    "@contracts": "contracts"
+    "@contracts": "contracts",
+    "@utils": "utils"
   },
   "commands": [
     "./commands",

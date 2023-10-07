@@ -1,12 +1,12 @@
 import { DateTime } from 'luxon';
-import { v4 as uuid } from 'uuid';
 
 import { SoftDeletes } from '@ioc:Adonis/Addons/LucidSoftDeletes';
 import Hash from '@ioc:Adonis/Core/Hash';
 import { compose } from '@ioc:Adonis/Core/Helpers';
-import { BaseModel as Model, beforeCreate, beforeSave, column } from '@ioc:Adonis/Lucid/Orm';
+import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm';
+import { UsesUuids } from '@utils/UsesUuids';
 
-export default class User extends compose(Model, SoftDeletes) {
+export default class User extends compose(BaseModel, SoftDeletes, UsesUuids) {
   @column({ isPrimary: true })
   public id: string;
 
@@ -30,11 +30,6 @@ export default class User extends compose(Model, SoftDeletes) {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
-
-  @beforeCreate()
-  public static async setIdWithUuid(user: User) {
-    user.id = uuid();
-  }
 
   @beforeSave()
   public static async hashPassword(user: User) {

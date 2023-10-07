@@ -1,3 +1,4 @@
+import User from '@app/Models/User';
 import Schema from '@ioc:Adonis/Lucid/Schema';
 
 export default class CreateApiTokensTable extends Schema {
@@ -6,7 +7,7 @@ export default class CreateApiTokensTable extends Schema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary();
-      table.uuid('user_id').references('id').inTable('users');
+      table.uuid('user_id').references(User.primaryKey).inTable(User.table);
       table.string('name').notNullable();
       table.string('type').notNullable();
       table.string('token').notNullable().unique();
