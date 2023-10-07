@@ -32,8 +32,8 @@ Route.group(() => {
     Route.post('/sign-in', 'AuthController.signIn');
     Route.on('/forgot-password').render('pages/forgot-password').as('forgot-password');
     Route.post('/forgot-password', 'AuthController.forgotPassword');
-    Route.on('/reset-password').render('pages/reset-password').as('reset-password');
-    Route.post('/reset-password', 'AuthController.resetPassword');
+    Route.get('/reset-password/:token', 'AuthController.renderResetForm').as('reset-password');
+    Route.post('/reset-password/:token', 'AuthController.resetPassword');
   }).middleware('guest');
 });
 
