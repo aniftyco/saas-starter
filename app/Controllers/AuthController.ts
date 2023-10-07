@@ -76,9 +76,18 @@ export default class AuthController {
     return view.render('pages/reset-password', { token: params.token });
   }
 
-  public async resetPassword({ request }: HttpContextContract) {
+  public async resetPassword({ request, params, session, response }: HttpContextContract) {
     const { password } = await request.validate(ResetPasswordValidator);
+    const reset = await PasswordReset.query().where('token', params.token).preload('user').firstOrFail();
 
-    console.log({ password });
+    reset.user.password = password;
+
+    await reset.user.save();
+
+    await reset.delete();
+
+    session.flash('success', 'Your password has been reset. Please sign in.');
+
+    return response.redirect().back();
   }
 }
