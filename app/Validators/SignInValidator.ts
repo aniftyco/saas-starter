@@ -28,6 +28,7 @@ export default class SignInValidator {
     email: schema.string([rules.trim(), rules.email()]),
     password: schema.string([rules.trim()]),
     remember: schema.boolean.optional(),
+    returnUrl: schema.string.optional(),
   });
 
   /**

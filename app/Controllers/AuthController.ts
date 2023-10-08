@@ -30,11 +30,14 @@ export default class AuthController {
   }
 
   public async signIn({ request, response, auth, session }: HttpContextContract) {
-    const { email, password, remember } = await request.validate(SignInValidator);
+    const { email, password, remember, returnUrl } = await request.validate(SignInValidator);
 
     try {
       await auth.attempt(email, password, remember);
 
+      if (returnUrl) {
+        return response.redirect().toPath(returnUrl);
+      }
       return response.redirect().toRoute('dashboard');
     } catch (err: any) {
       Logger.error(err);

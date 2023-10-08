@@ -28,7 +28,9 @@ Route.group(() => {
   Route.group(() => {
     Route.on('/sign-up').render('pages/sign-up').as('sign-up');
     Route.post('/sign-up', 'AuthController.signUp');
-    Route.on('/sign-in').render('pages/sign-in').as('sign-in');
+    Route.get('/sign-in', ({ request, view }) =>
+      view.render('pages/sign-in', { returnUrl: request.qs().returnUrl ?? Route.makeUrl('dashboard') })
+    ).as('sign-in');
     Route.post('/sign-in', 'AuthController.signIn');
     Route.on('/forgot-password').render('pages/forgot-password').as('forgot-password');
     Route.post('/forgot-password', 'AuthController.forgotPassword');

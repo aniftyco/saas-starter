@@ -7,6 +7,7 @@
       <a href="{{ route('welcome') }}" class="text-sm float-right pt-2 font-normal hover:underline">Go home</a>
     </h1>
     @ui.form({ action: route('sign-in') })
+      <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
       @!ui.input({ label: 'Email Address', name: 'email', type: 'email', placeholder: 'jane.doe@example.com' })
       @!ui.input({ label: 'Password', name: 'password', type: 'password', placeholder: 'hunter2' })
       <label class="mt-4 flex items-center space-x-2">

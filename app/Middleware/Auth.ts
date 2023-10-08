@@ -25,7 +25,7 @@ export default class AuthMiddleware {
    * of the mentioned guards and that guard will be used by the rest of the code
    * during the current request.
    */
-  protected async authenticate(auth: HttpContextContract['auth'], guards: (keyof GuardsList)[]) {
+  protected async authenticate({ auth, request }: HttpContextContract, guards: (keyof GuardsList)[]) {
     /**
      * Hold reference to the guard last attempted within the for loop. We pass
      * the reference of the guard to the "AuthenticationException", so that
@@ -55,20 +55,24 @@ export default class AuthMiddleware {
       'Unauthorized access',
       'E_UNAUTHORIZED_ACCESS',
       guardLastAttempted,
-      Route.makeUrl(this.redirectTo)
+      Route.makeUrl(this.redirectTo, { qs: { returnUrl: request.url() } })
     );
   }
 
   /**
    * Handle request
    */
-  public async handle({ auth }: HttpContextContract, next: () => Promise<void>, customGuards: (keyof GuardsList)[]) {
+  public async handle(
+    { request, auth }: HttpContextContract,
+    next: () => Promise<void>,
+    customGuards: (keyof GuardsList)[]
+  ) {
     /**
      * Uses the user defined guards or the default guard mentioned in
      * the config file
      */
     const guards = customGuards.length ? customGuards : [auth.name];
-    await this.authenticate(auth, guards);
+    await this.authenticate({ auth, request } as HttpContextContract, guards);
     await next();
   }
 }
