@@ -4,7 +4,7 @@ import { SoftDeletes } from '@ioc:Adonis/Addons/LucidSoftDeletes';
 import Hash from '@ioc:Adonis/Core/Hash';
 import { compose } from '@ioc:Adonis/Core/Helpers';
 import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm';
-import { UsesUuids } from '@utils/UsesUuids';
+import { UsesUuids } from '@ioc:Kubit/Support';
 
 export default class User extends compose(BaseModel, SoftDeletes, UsesUuids) {
   @column({ isPrimary: true })

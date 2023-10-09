@@ -54,7 +54,8 @@
     "@rlanz/bull-queue",
     "@verful/scheduler",
     "@adonisjs/redis",
-    "@adonisjs/route-model-binding/build/providers/RmbProvider"
+    "@adonisjs/route-model-binding/build/providers/RmbProvider",
+    "@kubit/support"
   ],
   "metaFiles": [
     {

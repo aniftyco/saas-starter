@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 import User from '@app/Models/User';
 import { compose } from '@ioc:Adonis/Core/Helpers';
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm';
-import { UsesUuids } from '@utils/UsesUuids';
+import { UsesUuids } from '@ioc:Kubit/Support';
 
 export default class PasswordReset extends compose(BaseModel, UsesUuids) {
   @column({ isPrimary: true })
