@@ -15,7 +15,7 @@ export default class SignUpController {
     try {
       const user = await User.create({ name, email, password });
 
-      auth.login(user);
+      await auth.login(user);
 
       return response.redirect().toRoute('dashboard');
     } catch (err: any) {
