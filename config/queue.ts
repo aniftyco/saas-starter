@@ -5,9 +5,13 @@ import type { QueueConfig } from '@ioc:Rlanz/Queue';
 const queueConfig: QueueConfig = {
   connection: Env.get('REDIS_URL') as QueueConfig['connection'],
 
-  queue: {},
+  queue: {
+    prefix: Env.get('APP_NAME'),
+  },
 
-  worker: {},
+  worker: {
+    prefix: Env.get('APP_NAME'),
+  },
 
   jobs: {
     /*
