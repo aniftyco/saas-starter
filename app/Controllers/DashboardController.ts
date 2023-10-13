@@ -15,7 +15,7 @@ export default class DashboardController {
         agent: uaParser(session.agent),
         ip: session.ip,
         geo: { country: geolite2.country(session.ip), city: geolite2.city(session.ip), asn: geolite2.asn(session.ip) },
-        creaedAt: session.createdAt,
+        createdAt: session.createdAt,
       }));
 
     return view.render('pages/dashboard', { sessionId: session.sessionId, sessions });
