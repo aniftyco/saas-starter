@@ -1,8 +1,9 @@
+import { DateTime } from 'luxon';
+
 import PasswordReset from '@app/Models/PasswordReset';
 import ResetPasswordValidator from '@app/Validators/ResetPasswordValidator';
 
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
-
 export default class ResetPasswordController {
   public async index({ view, params }: HttpContextContract) {
     return view.render('pages/auth/reset-password', { token: params.token });
@@ -15,6 +16,12 @@ export default class ResetPasswordController {
     reset.user.password = password;
 
     await reset.user.save();
+
+    await reset.user
+      .related('sessions')
+      .query()
+      .whereNull('deletedAt')
+      .update({ updatedAt: DateTime.now(), deletedAt: DateTime.now() });
 
     await reset.delete();
 
