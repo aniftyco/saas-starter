@@ -13,15 +13,18 @@
     @each(session in sessions)
       <div class="flex justify-between items-center py-2">
         <div>
-          <p class="font-medium">{{ session.agent.browser.name }} - {{ session.agent.os.name }}</p>
+          <p class="flex items-center space-x-2">
+          <span class="font-medium">{{ session.agent.browser.name }} - {{ session.agent.os.name }}</span>
+          <span class="text-xs text-gray-600">{{ session.createdAt.toRelative() }}</span></p>
           <p class="text-sm text-gray-600">
-            @if (session.geo.city)
+            @if (session.geo.city && session.geo.city.city)
             {{--  We have geo data, display city, region and country  --}}
-            {{ session.geo.city.city.names.en }} {{ session.geo.city.subdivisions[0].names.en }}, {{ session.geo.country.country.names.en }}</p>
+            {{ session.geo.city.city.names.en }}, {{ session.geo.city.subdivisions[0].names.en }}, {{ session.geo.country.country.names.en }}
             @else
             {{--  We don't have geo data, most likely ip is localhost, display it  --}}
             {{ session.ip }}
             @end
+          </p>
         </div>
         {{--  Do not delete active session, use sign out button above  --}}
         @if (session.id !== sessionId)
@@ -29,7 +32,7 @@
             @!ui.button({ label: 'Sign Out' })
           @end
         @else
-          <p class="text-sm text-green-600">Current Session</p>
+          <p class="text-sm text-green-600">This device</p>
         @end
       </div>
     @end
