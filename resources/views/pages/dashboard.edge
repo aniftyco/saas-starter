@@ -24,7 +24,7 @@
             @end
         </div>
         @if (session.id !== sessionId)
-          @ui.form({ action: '/', method: 'DELETE' })
+          @ui.form({ action: route('session.destroy', { sessionId: session.id }, { qs: { _method: 'DELETE' } }) })
             @!ui.button({ label: 'Sign Out' })
           @end
         @else

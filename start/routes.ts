@@ -41,4 +41,5 @@ Route.group(() => {
 Route.group(() => {
   Route.get('/dashboard', 'DashboardController').as('dashboard');
   Route.post('/sign-out', 'Auth/SignOutController').as('sign-out');
+  Route.delete('/sessions/:sessionId?', 'SessionsController.destroy').as('session.destroy');
 }).middleware('auth:web');
