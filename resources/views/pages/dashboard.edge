@@ -1,6 +1,6 @@
 @set('title', 'Dashboard')
 
-@layouts.root({ title, className })
+@layouts.root({ title })
   <main class="mx-auto my-6 max-w-md">
     <h1 class="text-2xl font-semibold border-b border-gray-500 pb-2">{{ title }}</h1>
     <p class="py-2">Welcome to your dashboard <span class="font-medium">{{ auth.user.name }}</span>!</p>
