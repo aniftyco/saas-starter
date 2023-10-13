@@ -14,7 +14,14 @@
       <div class="flex justify-between items-center py-2">
         <div>
           <p class="font-medium">{{ session.agent.browser.name }} - {{ session.agent.os.name }}</p>
-          <p class="text-sm text-gray-600">{{ session.ip }}</p>
+          <p class="text-sm text-gray-600">
+            @if (session.geo.city)
+            {{--  We have geo data, display city, region and country  --}}
+            {{ session.geo.city.city.names.en }} {{ session.geo.city.subdivisions[0].names.en }}, {{ session.geo.country.country.names.en }}</p>
+            @else
+            {{--  We don't have geo data, most likely ip is localhost, display it  --}}
+            {{ session.ip }}
+            @end
         </div>
         @if (session.id !== sessionId)
           @ui.form({ action: '/', method: 'DELETE' })

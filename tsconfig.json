@@ -27,7 +27,8 @@
       "@verful/scheduler",
       "@adonisjs/redis",
       "@adonisjs/route-model-binding/build/adonis-typings",
-      "@kubit/support/adonis-typings"
+      "@kubit/support/adonis-typings",
+      "@stouder-io/adonis-geolite2"
     ]
   }
 }

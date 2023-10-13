@@ -55,7 +55,8 @@
     "@verful/scheduler",
     "@adonisjs/redis",
     "@adonisjs/route-model-binding/build/providers/RmbProvider",
-    "@kubit/support"
+    "@kubit/support",
+    "@stouder-io/adonis-geolite2"
   ],
   "metaFiles": [
     {

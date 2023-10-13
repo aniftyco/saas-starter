@@ -28,6 +28,7 @@
     "@iconify-json/tabler": "^1.1.94",
     "@kubit/support": "^0.1.0",
     "@rlanz/bull-queue": "^1.0.6",
+    "@stouder-io/adonis-geolite2": "^1.0.2",
     "@verful/scheduler": "^1.2.2",
     "adonis-lucid-soft-deletes": "^1.4.4",
     "clsx": "^2.0.0",
