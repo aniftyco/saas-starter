@@ -7,5 +7,24 @@
     @ui.form({ action: route('sign-out') })
       @!ui.button({ label: 'Sign Out' })
     @end
+    <hr class="my-4" />
+    <h2 class="text-xl font-semibold border-b border-gray-500 pb-2">Active Sessions</h2>
+    <div>
+    @each(session in sessions)
+      <div class="flex justify-between items-center py-2">
+        <div>
+          <p class="font-medium">{{ session.agent.browser.name }} - {{ session.agent.os.name }}</p>
+          <p class="text-sm text-gray-600">{{ session.ip }}</p>
+        </div>
+        @if (session.id !== sessionId)
+          @ui.form({ action: '/', method: 'DELETE' })
+            @!ui.button({ label: 'Sign Out' })
+          @end
+        @else
+          <p class="text-sm text-green-600">Current Session</p>
+        @end
+      </div>
+    @end
+    </div>
   </main>
 @end
