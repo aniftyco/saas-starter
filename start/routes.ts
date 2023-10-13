@@ -40,5 +40,5 @@ Route.group(() => {
 // Protected routes
 Route.group(() => {
   Route.on('/dashboard').render('pages/dashboard').as('dashboard');
-  Route.post('/sign-out', 'SignOutController').as('sign-out');
+  Route.post('/sign-out', 'Auth/SignOutController').as('sign-out');
 }).middleware('auth:web');
