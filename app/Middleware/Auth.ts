@@ -55,15 +55,30 @@ export default class AuthMiddleware {
       'Unauthorized access',
       'E_UNAUTHORIZED_ACCESS',
       guardLastAttempted,
-      Route.makeUrl(this.redirectTo, { qs: { returnUrl: request.url() } })
+      Route.builder().qs({ returnUrl: request.url() }).make(this.redirectTo)
     );
+  }
+
+  protected async ensureValidSession({ auth, session, request }: HttpContextContract) {
+    try {
+      await auth.user!.related('sessions').query().where('id', session.sessionId).whereNull('deleted_at').firstOrFail();
+    } catch (err: any) {
+      await auth.logout();
+
+      throw new AuthenticationException(
+        'Invalid session',
+        'E_INVALID_SESSION',
+        undefined,
+        Route.builder().qs({ returnUrl: request.url() }).make(this.redirectTo)
+      );
+    }
   }
 
   /**
    * Handle request
    */
   public async handle(
-    { request, auth }: HttpContextContract,
+    { auth, session, request }: HttpContextContract,
     next: () => Promise<void>,
     customGuards: (keyof GuardsList)[]
   ) {
@@ -73,6 +88,8 @@ export default class AuthMiddleware {
      */
     const guards = customGuards.length ? customGuards : [auth.name];
     await this.authenticate({ auth, request } as HttpContextContract, guards);
+    await this.ensureValidSession({ auth, session, request } as HttpContextContract);
+
     await next();
   }
 }
