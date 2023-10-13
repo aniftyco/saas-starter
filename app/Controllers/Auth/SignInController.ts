@@ -17,6 +17,12 @@ export default class AuthController {
     try {
       await auth.attempt(email, password, remember);
 
+      auth.user!.related('sessions').create({
+        id: session.sessionId,
+        ip: request.ip(),
+        agent: request.header('user-agent'),
+      });
+
       if (returnUrl) {
         return response.redirect().toPath(returnUrl);
       }

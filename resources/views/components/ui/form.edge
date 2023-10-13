@@ -2,7 +2,7 @@
 @set('action', action ?? request.url())
 @set('className', className ?? null)
 
-<form method="{{ method.toLowerCase() }}" action="{{ action }}" {{{ className ? `class="${className}"` : '' }}}>
+<form method="post" action="{{ action }}" {{{ className ? `class="${className}"` : '' }}}>
   {{ csrfField() }}
   {{{ await $slots.main() }}}
 </form>
