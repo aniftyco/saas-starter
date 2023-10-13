@@ -23,6 +23,7 @@
             {{ session.ip }}
             @end
         </div>
+        {{--  Do not delete active session, use sign out button above  --}}
         @if (session.id !== sessionId)
           @ui.form({ action: route('session.destroy', { sessionId: session.id }, { qs: { _method: 'DELETE' } }) })
             @!ui.button({ label: 'Sign Out' })
