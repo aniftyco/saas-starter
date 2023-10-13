@@ -24,6 +24,7 @@ Server.middleware.register([
   () => import('@ioc:Adonis/Core/BodyParser'),
   () => import('@ioc:Adonis/Addons/Shield'),
   () => import('@app/Middleware/SilentAuth'),
+  () => import('@app/Middleware/ValidateSession'),
   () => import('@ioc:Adonis/Addons/RmbMiddleware'),
 ]);
 
