@@ -1,0 +1,4 @@
+@ui.button({ type: 'submit', className: 'relative' })
+  <span class="htmx-request:text-transparent">{{{ await $slots.main() }}}</span>
+  @!ui.icon({ name: 'loader-2', className: 'absolute hidden left-1/2 -ml-2.5 w-auto h-6 htmx-request:block htmx-request:animate-spin' })
+@end

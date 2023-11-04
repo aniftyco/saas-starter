@@ -1,0 +1,10 @@
+@set('label', label)
+@set('name', name)
+@set('className', className)
+
+<div class="mb-2">
+  <label class="flex items-center space-x-2">
+    <input {{ $props.serializeExcept(['label', 'className'], { type: 'checkbox', class: 'h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-0' }) }} />
+    <span class="text-sm">{{ label }}</span>
+  </label>
+</div>

@@ -1,41 +1,11 @@
 @set('title', 'Dashboard')
 
-@layouts.root({ title })
-  <main class="mx-auto my-6 max-w-md">
-    <h1 class="text-2xl font-semibold border-b border-gray-500 pb-2">{{ title }}</h1>
-    <p class="py-2">Welcome to your dashboard <span class="font-medium">{{ auth.user.name }}</span>!</p>
-    @ui.form({ action: route('sign-out') })
-      @!ui.button({ label: 'Sign Out' })
-    @end
-    <hr class="my-4" />
-    <h2 class="text-xl font-semibold border-b border-gray-500 pb-2">Active Sessions</h2>
-    <div>
-    @each(session in sessions)
-      <div class="flex justify-between items-center py-2">
-        <div>
-          <p class="flex items-center space-x-2">
-          <span class="font-medium">{{ session.agent.browser.name }} - {{ session.agent.os.name }}</span>
-          <span class="text-xs text-gray-600">{{ session.createdAt.toRelative() }}</span></p>
-          <p class="text-sm text-gray-600">
-            @if (session.geo.city && session.geo.city.city)
-            {{--  We have geo data, display city, region and country  --}}
-            {{ session.geo.city.city.names.en }}, {{ session.geo.city.subdivisions[0].names.en }}, {{ session.geo.country.country.names.en }}
-            @else
-            {{--  We don't have geo data, most likely ip is localhost, display it  --}}
-            {{ session.ip }}
-            @end
-          </p>
-        </div>
-        {{--  Do not delete active session, use sign out button above  --}}
-        @if (session.id !== sessionId)
-          @ui.form({ action: route('session.destroy', { sessionId: session.id }, { qs: { _method: 'DELETE' } }) })
-            @!ui.button({ label: 'Sign Out' })
-          @end
-        @else
-          <p class="text-sm text-green-600">This device</p>
-        @end
-      </div>
-    @end
+@layouts.app({ title })
+  <h1 class="font-medium text-xl text-gray-900 leading-6">Dashboard</h1>
+
+  <div class="my-6 bg-white overflow-hidden rounded-lg shadow-md">
+    <div class="px-4 py-5 sm:p-6">
+      Welcome back, {{ auth.user.name }}!
     </div>
-  </main>
+  </div>
 @end

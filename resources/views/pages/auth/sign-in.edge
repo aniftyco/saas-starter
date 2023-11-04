@@ -1,29 +1,16 @@
 @set('title', 'Sign In')
 
-@layouts.root({ title })
-  <main class="mx-auto my-6 max-w-md">
-    <h1 class="text-2xl font-semibold border-b border-gray-500 pb-2">
-      {{ title }}
-      <a href="{{ route('welcome') }}" class="text-sm float-right pt-2 font-normal hover:underline">Go home</a>
-    </h1>
-    @ui.form({ action: route('sign-in') })
-      <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
-      @!ui.input({ label: 'Email Address', name: 'email', type: 'email', placeholder: 'jane.doe@example.com' })
-      @!ui.input({ label: 'Password', name: 'password', type: 'password', placeholder: 'hunter2' })
-      <label class="mt-4 flex items-center space-x-2">
-        <input type="checkbox" name="remember_me" />
-        <span>Remember Me</span>
-      </label>
-      <div class="mt-4 flex justify-between items-center">
-      <a href="{{ route('forgot-password') }}" class="font-medium hover:underline">Forgot my password</a>
-      <div class="flex justify-end space-x-2">
-          @!ui.button({ type: 'reset', label: 'Cancel' })
-          @!ui.button({ label: 'Sign In' })
-        </div>
-      </div>
-    @end
-    <div class="text-center border-t mt-6 pt-2 border-gray-200 text-slate-600">
-      Don't have an account? <a href="{{ route('sign-up') }}" class="font-semibold hover:underline">Sign Up</a>.
+@layouts.app({ title })
+  @ui.form({ action: route('sign-in'), className: 'mx-auto my-6 max-w-md bg-white p-4 rounded-lg shadow-md' })
+    <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
+    @!ui.input({ label: 'Email Address', name: 'email', type: 'email', placeholder: 'jane.doe@example.com' })
+    @!ui.input({ label: 'Password', name: 'password', type: 'password', placeholder: 'hunter2' })
+    @!ui.checkbox({ label: 'Remember Me', name: 'remember' })
+    <div class="mt-4 flex items-center justify-end space-x-2">
+      <a href="{{ route('forgot-password') }}" class="text-sm font-medium hover:underline">Forgot your password?</a>
+      @ui.form.submit()
+        Sign In
+      @end
     </div>
-  </main>
+  @end
 @end

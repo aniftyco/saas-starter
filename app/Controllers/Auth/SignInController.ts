@@ -30,7 +30,7 @@ export default class AuthController {
     } catch (err: any) {
       Logger.error(err);
 
-      session.flash('errors.email', 'Invalid credentials');
+      session.flash('notification', { type: 'error', message: 'Invalid login credentials. Try again.' });
 
       return response.redirect().back();
     }

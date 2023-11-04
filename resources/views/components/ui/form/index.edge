@@ -2,7 +2,7 @@
 @set('action', action ?? request.url())
 @set('className', className ?? null)
 
-<form method="post" action="{{ action }}" {{{ className ? `class="${className}"` : '' }}}>
+<form {{ $props.serializeExcept(['method', 'action', 'className'], { method, action, class: clsx(className)}) }}>
   {{ csrfField() }}
   {{{ await $slots.main() }}}
 </form>

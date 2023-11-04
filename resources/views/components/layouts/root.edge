@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" hx-boost="true" hx-ext="head-support,body-support,csrf-token">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
-  <meta name="csrf-token" content="{{ csrfToken }}">
-  @entryPointStyles('app')
-  @entryPointScripts('app')
-</head>
-<body {{ $props.serializeOnly(['className']) }}>
-  {{{ await $slots.main() }}}
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="csrf-token" content="{{ csrfToken }}">
+    @entryPointStyles('app')
+    @entryPointScripts('app')
+  </head>
+  <body {{ $props.serializeOnly([], { class: clsx(className) }) }}>
+    {{{ await $slots.main() }}}
+  </body>
 </html>

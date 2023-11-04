@@ -1,0 +1,85 @@
+@set('className', 'bg-gray-100 text-gray-600 font-sans subpixel-antialiased')
+
+@layouts.root({ title, className })
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="flex items-center justify-between py-4">
+        <div class="flex items-center space-x-4">
+
+          <span class="font-semibold">{{ env('APP_NAME') }}</span>
+
+          <ul class="space-x-4">
+            <li><a href="{{ route('dashboard') }}" class="text-gray-600 text-sm font-semibold hover:underline">Dashboard</a></li>
+        </ul>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          @if(auth.isLoggedIn)
+            <div class="ml-3" x-data="{ open: false }" x-on:click.away="open = false">
+              <button type="button" class="flex items-center space-x-2 rounded-full" x-ref="trigger" x-on:click="open = !open">
+                <span class="text-sm">{{ auth.user.name }}</span>
+                @!ui.icon({ name: 'chevron-down', className: 'w-4 h-auto' })
+              </button>
+
+              <div
+                class="w-56 mt-2 bg-white border border-gray-100 rounded-md shadow-md divide-y divide-gray-100 focus:outline-none"
+                tabindex="-1" x-anchor.bottom-end="$refs.trigger" x-show="open" x-cloak>
+                <form action="{{ route('sign-out') }}" method="post">
+                  {{ csrfField() }}
+                  <button
+                    class="w-full text-left px-6 py-2.5 text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900">
+                    Log out
+                  </button>
+                </form>
+              </div>
+            </div>
+          @else
+            <a href="{{ route('sign-in') }}" class="text-gray-600 font-medium text-sm hover:underline">
+              Sign In
+            </a>
+            <a href="{{ route('sign-up') }}"
+              class="text-gray-600 font-medium text-sm hover:underline">
+              Sign Up
+            </a>
+          @endif
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
+    {{{ await $slots.main() }}}
+  </main>
+  @if(flashMessages.has('notification'))
+    <div class="absolute bottom-8 right-8">
+      <div
+        x-data="{
+          visible: true,
+          init() {
+            setTimeout(() => {
+              this.visible = false
+            }, 5000)
+          },
+        }"
+        x-show="visible"
+        x-transition:leave="transition ease duration-200"
+        x-transition:leave-start="opacity-100 transform scale-100"
+        x-transition:leave-end="transform scale-90 opacity-0"
+      >
+        @if(flashMessages.get('notification.type') === 'success')
+          <div class="bg-green-100 rounded-lg p-4 text-sm text-center font-medium text-green-800">
+            {{ flashMessages.get('notification.message') }}
+          </div>
+        @elseif(flashMessages.get('notification.type') === 'error')
+          <div class="bg-red-100 rounded-lg p-4 text-sm text-center font-medium text-red-800">
+            {{ flashMessages.get('notification.message') }}
+          </div>
+        @elseif(flashMessages.get('notification.type') === 'info')
+          <div class="bg-blue-100 rounded-lg p-4 text-sm text-center font-medium text-blue-800">
+            {{ flashMessages.get('notification.message') }}
+          </div>
+        @endif
+      </div>
+    </div>
+  @endif
+@end
