@@ -1,0 +1,13 @@
+{
+  "include": ["vite.config.ts", "./resources/client/**/*.ts", "./resources/client/**/*.vue"],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": ["vite/client"],
+    "paths": {
+      "@components/*": ["./resources/client/components/*"],
+      "@vendor/*": ["./vendor/*"]
+    }
+  }
+}
