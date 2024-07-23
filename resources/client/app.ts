@@ -13,8 +13,9 @@ createInertiaApp({
     return pages[`./pages/${name}.vue`];
   },
   setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .mount(el);
+    const app = createApp({ render: () => h(App, props) });
+    app.config.globalProperties.$route = route;
+    app.use(plugin);
+    app.mount(el);
   },
 });
