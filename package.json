@@ -6,12 +6,6 @@
     "build": "vite build"
   },
   "prettier": "@aniftyco/prettier",
-  "postcss": {
-    "plugins": {
-      "tailwindcss": [],
-      "autoprefixer": []
-    }
-  },
   "dependencies": {
     "@inertiajs/vue3": "^1.2.0",
     "vue": "^3.4.33"
