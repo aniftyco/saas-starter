@@ -9,18 +9,12 @@
       <li><a class="hover:underline" href="#">Blog</a></li>
     </ul>
 
-    @auth
+    <div class="flex items-center space-x-6">
+      <a class="font-semibold hover:underline" href="{{ route('sign-in') }}">Sign In</a>
       <a class="bg-primary-600 hover:bg-primary-500 text-primary-50/90 rounded-md px-4 py-2 font-medium"
-        href="{{ url('/') }}"
-      >Dashboard</a>
-    @else
-      <div class="flex items-center space-x-6">
-        <a class="font-semibold hover:underline" href="{{ url('/sign-in') }}">Sign In</a>
-        <a class="bg-primary-600 hover:bg-primary-500 text-primary-50/90 rounded-md px-4 py-2 font-medium"
-          href="{{ url('/sign-up') }}"
-        >Sign Up</a>
-      </div>
-    @endauth
+        href="{{ route('sign-up') }}"
+      >Sign Up</a>
+    </div>
   </header>
   <main class="mx-auto w-full max-w-7xl flex-1 px-4">
     @yield('content')

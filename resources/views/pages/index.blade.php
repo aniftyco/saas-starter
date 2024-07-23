@@ -71,7 +71,7 @@
       Built with AdonisJS, Tailwind CSS, HTMX and AlpineJS. You can quickly create any SaaS with this starter.</h2>
     <div class="flex items-center justify-center space-x-4">
       <a class="bg-primary-600 hover:bg-primary-500 text-primary-50/90 rounded-md px-4 py-2 font-medium"
-        href="{{ url('/') }}"
+        href="{{ route('sign-up') }}"
       >Start your 7 day free trial</a>
       <a class="font-semibold" href="#">Learn more →</a>
     </div>
@@ -149,7 +149,7 @@
             </ul>
           </div>
 
-          <a href="{{ url('/sign-up') }}" @class([
+          <a href="{{ route('sign-up') }}" @class([
               'mt-8 block w-full rounded-md border border-transparent py-3 px-6 text-center font-medium',
               'bg-primary-500 text-white hover:bg-primary-600' => $plan['popular'],
               'bg-primary-50 text-primary-700 hover:bg-primary-100' => !$plan['popular'],
