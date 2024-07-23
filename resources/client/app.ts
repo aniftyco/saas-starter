@@ -2,12 +2,6 @@ import { createApp, DefineComponent, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import axios from 'axios';
 
-declare global {
-  interface Window {
-    axios: typeof axios;
-  }
-}
-
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

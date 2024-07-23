@@ -4,7 +4,7 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "types": ["vite/client"],
+    "types": ["vite/client", "./env.d.ts"],
     "paths": {
       "@components/*": ["./resources/client/components/*"],
       "@vendor/*": ["./vendor/*"]
