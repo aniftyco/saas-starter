@@ -4,9 +4,12 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "types": ["vite/client", "./env.d.ts"],
     "paths": {
-      "@components/*": ["./resources/client/components/*"],
+      "@app/*": ["./resources/client/*"],
       "@vendor/*": ["./vendor/*"]
     }
   }
