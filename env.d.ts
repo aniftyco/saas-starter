@@ -16,3 +16,11 @@ declare global {
     route: typeof route;
   }
 }
+
+// Augment Vue
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    route: RouteFn;
+    $route: RouteFn;
+  }
+}
