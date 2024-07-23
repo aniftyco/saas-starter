@@ -8,6 +8,10 @@
   "prettier": "@aniftyco/prettier",
   "dependencies": {
     "@inertiajs/vue3": "^1.2.0",
+    "clsx": "^2.1.1",
+    "radix-vue": "^1.9.2",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.33"
   },
   "devDependencies": {
