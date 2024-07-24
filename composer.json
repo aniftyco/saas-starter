@@ -9,7 +9,10 @@
     "boilerplate",
     "starter-kit"
   ],
-  "license": "MIT",
+  "license": [
+    "BUSL-1.1",
+    "GPL-2.0-or-later"
+  ],
   "require": {
     "php": "^8.2",
     "inertiajs/inertia-laravel": "^1.3",
