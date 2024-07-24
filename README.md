@@ -17,8 +17,7 @@
 
 <!-- @TODO: Write this -->
 
-> [!CAUTION]
-> This repository is not ready for general usage.
+> [!CAUTION] This repository is not ready for general usage.
 
 ## Contributing
 
@@ -37,4 +36,12 @@ If you discover a security vulnerability within the starter, please send an e-ma
 
 ## License
 
-<!-- @TODO: sort license -->
+This software is provided under a dual-licensing model.
+
+1. **Development License:** This software can be used for development, testing, and evaluation purposes under the terms
+   of the [Business Source License 1.1](/LICENSE).
+
+2. **Production License:** To use this software in a production environment, you must purchase a commercial license. For
+   details on obtaining a commercial license, please visit https://niftysaas.com/license.
+
+By using this software, you agree to the terms of the applicable license.
