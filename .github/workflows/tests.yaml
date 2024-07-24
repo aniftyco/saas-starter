@@ -32,4 +32,4 @@ jobs:
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
       - name: Execute tests
-        run: php artisan test
+        run: php artisan key:generate && php artisan test
