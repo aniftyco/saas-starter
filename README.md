@@ -17,7 +17,8 @@
 
 <!-- @TODO: Write this -->
 
-> [!CAUTION] This repository is not ready for general usage.
+> [!CAUTION]
+> This repository is not ready for general usage.
 
 ## Contributing
 
