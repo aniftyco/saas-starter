@@ -10,7 +10,6 @@
 <a href="https://github.com/aniftyco/saas-starter/actions"><img src="https://github.com/aniftyco/saas-starter/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/aniftyco/saas-starter"><img src="https://img.shields.io/packagist/dt/aniftyco/saas-starter" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/aniftyco/saas-starter"><img src="https://img.shields.io/packagist/v/aniftyco/saas-starter" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/aniftyco/saas-starter"><img src="https://img.shields.io/packagist/l/aniftyco/saas-starter" alt="License"></a>
 </p>
 
 ## About Nifty SaaS
