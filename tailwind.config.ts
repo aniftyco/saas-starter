@@ -4,7 +4,12 @@ import animate from 'tailwindcss-animate';
 
 export default {
   darkMode: ['class'],
-  content: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php', './resources/client/**/*.{ts,vue}'],
+  content: [
+    './resources/client/**/*.vue',
+    './resources/maizzle/**/*.html',
+    './resources/views/**/*.blade.php',
+    './storage/framework/views/*.php',
+  ],
   theme: {
     extend: {
       colors: {

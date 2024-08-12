@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import vue from '@vitejs/plugin-vue';
+import maizzle from 'vite-plugin-maizzle';
 import tailwind from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 
@@ -18,6 +19,11 @@ export default defineConfig({
     laravel({
       input: ['resources/client/app.css', 'resources/client/app.ts'],
       refresh: true,
+    }),
+    maizzle({
+      src: resolve(process.cwd(), 'resources/maizzle'),
+      dest: resolve(process.cwd(), 'resources/views/mail'),
+      ext: 'blade.php',
     }),
   ],
   resolve: {
