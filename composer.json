@@ -14,10 +14,10 @@
     "GPL-2.0-or-later"
   ],
   "authors": [
-      {
-          "name": "NiftyCo, LLC",
-          "homepage": "https://aniftyco.com"
-      },
+    {
+      "name": "NiftyCo, LLC",
+      "homepage": "https://aniftyco.com"
+    },
     {
       "name": "Josh Manders",
       "homepage": "https://x.com/joshmanders",
