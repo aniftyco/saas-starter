@@ -3,17 +3,35 @@
 namespace NiftyCo\Support\Session;
 
 use Carbon\Carbon;
+use Illuminate\Contracts\Auth\Guard;
 
-/**
- * @TODO:
- * 1. Change column `last_activity` => :timestamp to `last_active_at` => :datetime
- * 2. Update all underlining `last_activity` usage to account for new column and format
- * 3. Create `Session` model that has a virtual columns of `browser` and `location` that
- *    return mobiledetect parsing on `browser` and geoip data on `location`
- * 4. Update `User` model to add a `sessions` relationship that returns all sessions
- */
 class DatabaseSessionHandler extends \Illuminate\Session\DatabaseSessionHandler
 {
+    private ?object $session = null;
+
+    public function read($sessionId): string|false
+    {
+        if (!is_null($this->session = $this->getQuery()->find($sessionId))) {
+            $this->session = (object) $this->session;
+        }
+
+        info('session read: ' . json_encode($this->session));
+
+        if ($this->expired($this->session)) {
+            $this->exists = true;
+
+            return '';
+        }
+
+        if (isset($this->session->payload)) {
+            $this->exists = true;
+
+            return base64_decode($this->session->payload);
+        }
+
+        return '';
+    }
+
     protected function expired($session): bool
     {
         if (isset($session->last_active_at)) {
@@ -27,7 +45,7 @@ class DatabaseSessionHandler extends \Illuminate\Session\DatabaseSessionHandler
     {
         $payload = [
             'payload' => base64_encode($data),
-            'last_active_at' => now(),
+            'last_active_at' => now()->toDateTimeString(),
         ];
 
         if (!$this->container) {
@@ -36,8 +54,20 @@ class DatabaseSessionHandler extends \Illuminate\Session\DatabaseSessionHandler
 
         return tap($payload, function (&$payload) {
             $this->addUserInformation($payload)
-                ->addRequestInformation($payload);
+                ->addRequestInformation($payload)
+                ->addLocationInformation($payload);
         });
+    }
+
+    protected function addLocationInformation(&$payload): static
+    {
+        if ($this->container->bound(Guard::class) && !is_null($payload['user_id'])) {
+            $payload = array_merge($payload, [
+                'location' => $this->session->location ?? $this->container->make(Geo::class)->lookup($this->ipAddress(), json: true),
+            ]);
+        }
+
+        return $this;
     }
 
     protected function performInsert($sessionId, $payload): bool|null

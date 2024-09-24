@@ -1,48 +1,75 @@
 <script setup lang="ts">
-import { useForm, Head, Link } from '@inertiajs/vue3';
-import Logo from '@app/components/Logo.vue';
-import Input from '@app/components/Input.vue';
-import Checkbox from '@app/components/Checkbox.vue';
-import Button from '@app/components/Button.vue';
-import Loading from '@app/components/icons/Loading.vue';
-import { cx } from '@app/utils';
+import { Head, Link, useForm } from '@inertiajs/vue3';
+import AuthLayout from '@app/layouts/auth.vue';
+import { Button, Input, Field, Label, Checkbox, ErrorMessage, Fieldset } from '@app/components/ui';
+
+defineOptions({
+  layout: AuthLayout,
+});
 
 const form = useForm({
   email: '',
   password: '',
   remember: false,
 });
+
+const submit = () => {
+  form
+    .transform((data) => ({
+      ...data,
+      remember: form.remember ? 'on' : '',
+    }))
+    .post(route('sign-in'), {
+      onFinish: () => form.reset('password'),
+    });
+};
 </script>
+
 <template>
-  <Head title="Sign In" />
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
-    <div class="mt-16 mb-8 w-fit mx-auto">
-      <Logo />
+  <Head title="Log in" />
+  <form @submit.prevent="submit">
+    <Fieldset class="gap-4 flex flex-col">
+      <Field>
+        <Label for="email">Email</Label>
+        <Input
+          name="email"
+          autocomplete="email"
+          placeholder="jane.doe@example.com"
+          v-model="form.email"
+          v-bind:autofocus="true"
+          v-bind:invalid="form.errors.email"
+        />
+        <ErrorMessage v-if="form.errors.email">{{ form.errors.email }}</ErrorMessage>
+      </Field>
+
+      <Field>
+        <Label for="password">Password</Label>
+        <Input
+          name="password"
+          autocomplete="password"
+          type="password"
+          placeholder="hunter2"
+          v-model="form.password"
+          v-bind:invalid="form.errors.password"
+        />
+        <ErrorMessage v-if="form.errors.password">{{ form.errors.password }}</ErrorMessage>
+      </Field>
+
+      <Field class="flex items-center gap-3">
+        <Checkbox v-model:checked="form.remember" name="remember" />
+        <Label for="remember">Remember me</Label>
+      </Field>
+    </Fieldset>
+
+    <div class="flex items-center justify-end mt-4 -mx-8 -mb-4 px-8 py-4 bg-background-50 dark:bg-background-900/30">
+      <Link
+        :href="route('password.forgot')"
+        class="underline text-sm text-background-600 dark:text-background-400 hover:text-background-900 dark:hover:text-background-100 rounded-md focus:outline-none focus:ring-0"
+      >
+        Forgot your password?
+      </Link>
+
+      <Button class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Log in</Button>
     </div>
-    <form
-      @submit.prevent="form.post(route('sign-in'))"
-      class="mx-auto my-4 max-w-md bg-zinc-100 p-4 rounded-lg shadow-md"
-    >
-      <h1 class="text-2xl font-semibold text-center">Welcome back</h1>
-      <p class="mb-4 text-center">Please enter your credentials to sign in.</p>
-      <Input v-model="form.email" :error="form.errors.email" label="Email Address" placeholder="jane@example.com" />
-      <Input
-        v-model="form.password"
-        :error="form.errors.password"
-        label="Password"
-        type="password"
-        placeholder="hunter2"
-      />
-      <div class="mt-4">
-        <Checkbox v-model="form.remember" label="Remember me" />
-      </div>
-      <div class="mt-4 flex items-center justify-end space-x-2">
-        <Link href="/forgot-password" class="text-sm font-medium hover:underline">Forgot your password?</Link>
-        <Button type="submit" :class="cx({ 'cursor-wait': form.processing })" :disabled="form.processing">
-          <Loading class="size-5" v-if="form.processing" />
-          <span v-else>Sign in</span>
-        </Button>
-      </div>
-    </form>
-  </main>
+  </form>
 </template>

@@ -2,7 +2,10 @@
 
 @section('main')
   <header class="mx-auto mb-12 flex w-full max-w-7xl items-center justify-between p-4">
-    <x-logo />
+    <a class="flex items-center gap-2" href="{{ route('home') }}">
+      <x-logo class="size-8" />
+      <span class="text-primary-600 text-2xl font-semibold">{{ config('app.name') }}</span>
+    </a>
     <ul class="flex items-center space-x-20 font-medium">
       <li><a class="hover:underline" href="#features">Features</a></li>
       <li><a class="hover:underline" href="#pricing">Pricing</a></li>

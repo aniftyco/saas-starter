@@ -1,9 +1,13 @@
 import { AxiosStatic } from 'axios';
 
-type RouteFn = <Params = number | string | number[] | string[] | Record<string, number | string>>(
-  name: string,
-  params?: Params
-) => string;
+interface RouteFn {
+    <Params = number | string | number[] | string[] | Record<string, number | string>>(
+        name?: string,
+        params?: Params
+    ): string;
+
+    is(name: string): boolean;
+}
 
 declare global {
   // globals

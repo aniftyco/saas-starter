@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Events\UserSignedUp;
+use App\Http\Requests\SignUpRequest;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Inertia\Response;
 
 class SignUpController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
+    public function show(): Response
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required|same:password',
-        ]);
+        return inertia('sign-up');
+    }
+
+    public function create(SignUpRequest $request): RedirectResponse
+    {
+        $user = User::create($request->only('name', 'email', 'password'));
+
+        event(new UserSignedUp($user));
+
+        auth()->login($user);
 
         return to_route('home');
     }

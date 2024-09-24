@@ -2,22 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Events\UserSignedIn;
+use App\Http\Requests\SignInRequest;
+use Illuminate\Http\RedirectResponse;
+use Inertia\Response;
 
 class SignInController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
+    public function show(): Response
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        return inertia('sign-in');
+    }
 
-        session()?->put('authed', true);
+    public function create(SignInRequest $request): RedirectResponse
+    {
+        if (auth()->attempt($request->only('email', 'password'), $request->get('remember', false))) {
+            $user = auth()->user();
 
-        return to_route('home');
+            event(new UserSignedIn($user));
+
+            $request->session()->regenerate();
+
+            return redirect()->intended();
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 }

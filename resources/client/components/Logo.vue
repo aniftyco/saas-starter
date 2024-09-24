@@ -1,21 +1,28 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ size?: 'sm' | 'md' | 'lg' }>(), {
+export type Props = {
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+};
+
+const props = withDefaults(defineProps<Props>(), {
   size: 'md',
 });
 </script>
 <template>
-  <a
-    class="flex select-none items-end space-x-1"
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    class="fill-current text-primary-600"
     :class="{
-      'text-xl': size === 'sm',
-      'text-2xl': size === 'md',
-      'text-3xl': size === 'lg',
+      'size-6': props.size === 'sm',
+      'size-8': props.size === 'md',
+      'size-12': props.size === 'lg',
+      'size-24': props.size === 'xl',
+      'size-48': props.size === '2xl',
     }"
-    href="/"
   >
-    <span class="mr-1 pb-0.5 font-semibold text-gray-900">NIFTY</span>
-    <span class="from-primary-600 rounded-lg bg-gradient-to-l to-indigo-600 px-1.5 py-0.5 font-semibold text-white"
-      >SaaS</span
-    >
-  </a>
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M11.132 2.504l-4 7a1 1 0 0 0 .868 1.496h8a1 1 0 0 0 .868 -1.496l-4 -7a1 1 0 0 0 -1.736 0z" />
+    <path d="M17 13a4 4 0 1 1 -3.995 4.2l-.005 -.2l.005 -.2a4 4 0 0 1 3.995 -3.8z" />
+    <path d="M9 13h-4a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2z" />
+  </svg>
 </template>

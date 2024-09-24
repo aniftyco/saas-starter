@@ -1,9 +1,13 @@
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 import animate from 'tailwindcss-animate';
+import forms from '@tailwindcss/forms';
 
 export default {
-  darkMode: ['class'],
+  darkMode: ['variant', [
+    '@media (prefers-color-scheme: dark) { &:not(.light *) }',
+    '&:is(.dark *)',
+  ]],
   content: [
     './resources/client/**/*.vue',
     './resources/maizzle/**/*.html',
@@ -14,22 +18,17 @@ export default {
     extend: {
       colors: {
         primary: colors.indigo,
-      },
-      keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
-        },
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        secondary: colors.zinc,
+
+        background: colors.slate,
+
+        danger: colors.red,
+        warning: colors.yellow,
+        success: colors.green,
+        info: colors.blue,
+
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, forms],
 } satisfies Config;

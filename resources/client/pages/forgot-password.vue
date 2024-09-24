@@ -1,34 +1,50 @@
 <script setup lang="ts">
-import { useForm, Head } from '@inertiajs/vue3';
-import Logo from '@app/components/Logo.vue';
-import Input from '@app/components/Input.vue';
-import Button from '@app/components/Button.vue';
-import Loading from '@app/components/icons/Loading.vue';
-import { cx } from '@app/utils';
+import { Head, useForm } from '@inertiajs/vue3';
+import AuthLayout from '@app/layouts/auth.vue';
+import { Button, Fieldset, Field, Label, Input, ErrorMessage } from '@app/components/ui';
+
+defineOptions({
+  layout: AuthLayout,
+});
 
 const form = useForm({
   email: '',
 });
+
+const submit = () => {
+  form.post(route('password.email'));
+};
 </script>
+
 <template>
   <Head title="Forgot Password" />
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
-    <div class="mt-16 mb-8 w-fit mx-auto">
-      <Logo />
+
+  <div class="mb-4 text-sm text-background-600 dark:text-background-400">
+    Forgot your password? No problem. Just let us know your email address and we will email you a password reset link
+    that will allow you to choose a new one.
+  </div>
+
+  <form @submit.prevent="submit">
+    <Fieldset class="gap-4 flex flex-col">
+      <Field>
+        <Label for="email">Email</Label>
+        <Input
+          name="email"
+          autocomplete="email"
+          type="email"
+          placeholder="jane.doe@example.com"
+          v-model="form.email"
+          v-bind:autofocus="true"
+          v-bind:invalid="form.errors.email"
+        />
+        <ErrorMessage v-if="form.errors.email">{{ form.errors.email }}</ErrorMessage>
+      </Field>
+    </Fieldset>
+
+    <div class="flex items-center justify-end mt-4 -mx-8 -mb-4 px-8 py-4 bg-background-50 dark:bg-background-900/30">
+      <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+        Email Password Reset Link
+      </Button>
     </div>
-    <form
-      @submit.prevent="form.post(route('forgot-password'))"
-      class="mx-auto my-4 max-w-md bg-zinc-100 p-4 rounded-lg shadow-md"
-    >
-      <h1 class="text-2xl font-semibold text-center">Forgot your password?</h1>
-      <p class="mb-4 text-center">Enter your email address and we'll send you a link to reset your password.</p>
-      <Input v-model="form.email" :error="form.errors.email" label="Email Address" placeholder="jane@example.com" />
-      <div class="mt-4 flex justify-end">
-        <Button type="submit" :class="cx({ 'cursor-wait': form.processing })" :disabled="form.processing">
-          <Loading class="size-5" v-if="form.processing" />
-          <span v-else>Send Reset Link</span>
-        </Button>
-      </div>
-    </form>
-  </main>
+  </form>
 </template>

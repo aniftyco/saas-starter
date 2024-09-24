@@ -1,5 +1,5 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-slot="icon">
     <circle cx="4" cy="12" r="3" fill="currentColor">
       <animate id="fade0" fill="freeze" attributeName="opacity" begin="0;fade1.end-0.25s" dur="0.75s" values="1;0.2" />
     </circle>

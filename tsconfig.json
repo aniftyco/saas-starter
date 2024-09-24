@@ -9,6 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "types": ["vite/client", "./env.d.ts"],
     "paths": {
+        "@root/*": ["./*"],
       "@app/*": ["./resources/client/*"],
       "@vendor/*": ["./vendor/*"]
     }

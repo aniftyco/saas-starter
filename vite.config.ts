@@ -21,13 +21,14 @@ export default defineConfig({
       refresh: true,
     }),
     maizzle({
-      src: resolve(process.cwd(), 'resources/maizzle'),
-      dest: resolve(process.cwd(), 'resources/views/mail'),
+      src: resolve(__dirname, 'resources/maizzle'),
+      dest: resolve(__dirname, 'resources/views/mail'),
       ext: 'blade.php',
     }),
   ],
   resolve: {
     alias: {
+      '@root': resolve(__dirname),
       '@app': resolve(__dirname, 'resources/client'),
       '@vendor': resolve(__dirname, 'vendor/'),
     },
