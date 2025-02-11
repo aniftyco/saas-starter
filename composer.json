@@ -1,0 +1,34 @@
+{
+  "name": "aniftyco/saas-starter",
+  "description": "The SaaS starter you need to get shit done",
+  "license": "BSL-1.1",
+  "authors": [
+    {
+      "name": "NiftyCo, LLC",
+      "homepage": "https://aniftyco.com"
+    },
+    {
+      "name": "Josh Manders",
+      "homepage": "https://x.com/joshmanders"
+    }
+  ],
+  "homepage": "https://github.com/aniftyco/saas-starter",
+  "keywords": [
+    "skeleton",
+    "composer",
+    "create-project",
+    "saas",
+    "saas-starter"
+  ],
+  "require": {
+    "php": "^8.4"
+  },
+  "require-dev": {
+    "aniftyco/skeletor": "dev-master"
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "NiftyCo\\Skeletor\\Runner::execute"
+    ]
+  }
+}
