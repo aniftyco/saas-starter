@@ -1,0 +1,16 @@
+{
+  "include": ["vite.config.ts", "./resources/client/**/*.ts"],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["vite/client", "./env.d.ts"],
+    "paths": {
+      "@app/*": ["./resources/client/*"],
+      "@vendor/*": ["./vendor/*"]
+    }
+  }
+}
