@@ -1,0 +1,17 @@
+{
+  "include": ["vite.config.ts", "./resources/client/**/*.ts", "./resources/client/**/*.tsx"],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["vite/client", "./env.d.ts"],
+    "jsx": "react-jsx",
+    "paths": {
+      "@app/*": ["./resources/client/*"],
+      "@vendor/*": ["./vendor/*"]
+    }
+  }
+}
