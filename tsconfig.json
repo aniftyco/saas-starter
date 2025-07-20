@@ -7,8 +7,8 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["vite/client", "./env.d.ts"],
     "jsx": "react-jsx",
+    "types": ["vite/client", "./env.d.ts"],
     "paths": {
       "@app/*": ["./resources/client/*"],
       "@vendor/*": ["./vendor/*"]
