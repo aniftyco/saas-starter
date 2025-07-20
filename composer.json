@@ -7,6 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "aniftyco/laravel-attachments": "dev-master",
         "filament/filament": "^3.3",
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^12.0",

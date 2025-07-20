@@ -4,8 +4,71 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d66e10ecb08ca9855d0fb37c4623f043",
+    "content-hash": "4b51c9629e434bc9a86fe4a17d116d68",
     "packages": [
+        {
+            "name": "aniftyco/laravel-attachments",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aniftyco/laravel-attachments.git",
+                "reference": "43337ebcc719367d2494481e441096e1b18b56d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aniftyco/laravel-attachments/zipball/43337ebcc719367d2494481e441096e1b18b56d1",
+                "reference": "43337ebcc719367d2494481e441096e1b18b56d1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^11.0|^12.0",
+                "illuminate/http": "^11.0|^12.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "illuminate/support": "^11.0",
+                "orchestra/testbench": "^9.5",
+                "pestphp/pest": "^3.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NiftyCo\\Attachments\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "NiftyCo, LLC",
+                    "homepage": "https://aniftyco.com"
+                },
+                {
+                    "name": "Josh Manders",
+                    "homepage": "https://x.com/joshmanders"
+                }
+            ],
+            "description": "Turn any field on your Eloquent models into attachments",
+            "homepage": "https://github.com/aniftyco/laravel-attachments",
+            "keywords": [
+                "attachments",
+                "eloquent",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/aniftyco/laravel-attachments/issues",
+                "source": "https://github.com/aniftyco/laravel-attachments/tree/master"
+            },
+            "time": "2025-03-07T02:22:58+00:00"
+        },
         {
             "name": "anourvalar/eloquent-serialize",
             "version": "1.3.3",
@@ -10662,7 +10725,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "aniftyco/laravel-attachments": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
