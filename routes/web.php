@@ -2,5 +2,4 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
-Route::inertia('/welcome', 'welcome');
+Route::view('/', 'welcome')->name('home');
