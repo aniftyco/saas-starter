@@ -13,7 +13,7 @@
 /.zed
 /auth.json
 /node_modules
-/public/build
+/public/assets
 /public/hot
 /public/storage
 /public/vendor
