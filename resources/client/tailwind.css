@@ -6,7 +6,7 @@
 @source '../client/**/*.ts';
 @source '../client/**/*.tsx';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
   --font-sans:
