@@ -16,12 +16,12 @@ class UserResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'avatar' => $this->avatar?->url ?? 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=000&background=00ffcc',
-            'isStaff' => $this->role->is(UserRole::Staff),
-            'isConfirmed' => $this->confirmed_at !== null,
+            'id' => $this->resource->id,
+            'name' => $this->resource->name,
+            'email' => $this->resource->email,
+            'avatar' => $this->resource->avatar?->url ?? 'https://ui-avatars.com/api/?name='.urlencode($this->resource->name).'&color=000&background=00ffcc',
+            'isStaff' => $this->resource->role->is(UserRole::Staff),
+            'isConfirmed' => $this->resource->confirmed_at !== null,
         ];
     }
 }
