@@ -12,5 +12,6 @@ declare global {
     axios: AxiosStatic;
     Livewire: typeof LivewireInstance;
     Alpine: typeof AlpineInstance;
+    toggleTheme: <Theme = 'light' | 'dark' | 'auto'>(theme: Theme) => void;
   }
 }
