@@ -2,6 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
+import ziggy from 'vite-plugin-ziggy';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
@@ -18,5 +19,8 @@ export default defineConfig({
     }),
     tailwindcss(),
     react(),
+    ziggy({
+      only: ['index', 'auth.*', 'app.*'],
+    }),
   ],
 });

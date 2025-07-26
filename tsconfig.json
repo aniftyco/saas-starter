@@ -8,7 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
-    "types": ["vite/client", "./env.d.ts"],
+    "types": ["vite/client", "vite-plugin-ziggy/routes", "./env.d.ts"],
     "paths": {
       "@app/*": ["./resources/client/*"],
       "@vendor/*": ["./vendor/*"]

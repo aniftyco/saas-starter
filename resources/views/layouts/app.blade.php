@@ -7,6 +7,7 @@
     @viteReactRefresh
     @vite(['resources/client/tailwind.css', 'resources/client/app.tsx'])
     @inertiaHead
+    @routes
 </head>
 
 <body>
